@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html style="height:100%">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - QuarterMaster</title> 
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+   
+
+</head>
+<body style="background: #FFE4B5;box-shadow: inset 0px 0px 18px 3px #FFFAFA,
+            inset 0px 0px 25px 12.5px #FAFAD2;">
+    <div class="navbar navbar-fixed-top navbar-light" style=" background: linear-gradient(to bottom right, #006699 -18%, #00ccff 103%); font-family: Papyrus; font-style: oblique;box-shadow: inset 0px 0px 18px 3px #FFFAFA,
+            inset 0px 0px 25px 12.5px #e3f2fd;height:100%">
+        <div class="container-fluid">
+            <div class="navbar-brand w-25">
+                <a class="navbar-brand" href="@Url.Action("Index","Home")">
+                    <img class="navbar-brand w-50" style="border-radius: 12px; margin-left: 2.25em;" src="https://i.imgur.com/13hYd6e.jpg">
+                    <h1 style="margin-left: .35em; color:aliceblue;"> QuarterMaster</h1>
+                </a>
+
+            </div>
+
+
+            <button type="button" class="float-xl-left  navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+
+
+            </a>
+            <div class="navbar-collapse collapse text-right" id="navbarNav" style="color:aliceblue;">
+                <ul class="navbar-nav mr-auto m-lg-2 mt-lg-0">
+                    <li class="nav-item active text-right" style="color:aliceblue;text-shadow:-0.5px -0.5px 0 #000,
+                                                                                                0.5px -0.5px 0 #000,
+                                                                                                -0.5px 0.5px 0 #000,
+                                                                                                 0.5px 0.5px 0 #000;font-size:1.5em;">
+                        @Html.ActionLink("Home", "Index", "Home")
+                    </li>
+                    <li class="nav-item active text-right" style="color:aliceblue;text-shadow:-0.5px -0.5px 0 #000,
+                                                                                            0.5px -0.5px 0 #000,
+                                                                                            -0.5px 0.5px 0 #000,
+                                                                                             0.5px 0.5px 0 #000;font-size:1.5em;">
+                        @Html.ActionLink("Stocks", "Index", "Stocks")
+                    </li>
+                    <li class="nav-item active text-right" style="color:aliceblue;text-shadow:-0.5px -0.5px 0 #000,
+                                                                                            0.5px -0.5px 0 #000,
+                                                                                            -0.5px 0.5px 0 #000,
+                                                                                             0.5px 0.5px 0 #000;font-size:1.5em;">
+                        @Html.ActionLink("Calendar", "CalendarIndex", "Calendar")
+                    </li>
+                    <li class="nav-item active text-right" style="color:aliceblue;text-shadow:-0.5px -0.5px 0 #000,
+                                                                                            0.5px -0.5px 0 #000,
+                                                                                            -0.5px 0.5px 0 #000,
+                                                                                             0.5px 0.5px 0 #000; font-size:1.5em;">
+                        @Html.ActionLink("Watchlist", "Watchlist", "Stocks")
+                    </li>
+                    <li class="nav-item active text-right" style="color:aliceblue;text-shadow:-0.5px -0.5px 0 #000,
+                                                                                            0.5px -0.5px 0 #000,
+                                                                                            -0.5px 0.5px 0 #000,
+                                                                                             0.5px 0.5px 0 #000; font-size:1.5em;">
+
+                   @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item active text-right" style="color:aliceblue;text-shadow:-0.5px -0.5px 0 #000,
+                                                                                            0.5px -0.5px 0 #000,
+                                                                                            -0.5px 0.5px 0 #000,
+                                                                                             0.5px 0.5px 0 #000; font-size:1.5em;">
+
+                            @Html.ActionLink("Manage Page", "ManageHome", "Admin")
+                        </li>
+
+
+                    }
+                    else
+                    {
+                        <li class="nav-item active text-right" style="color:aliceblue;text-shadow:-0.5px -0.5px 0 #000,
+                                                                                            0.5px -0.5px 0 #000,
+                                                                                            -0.5px 0.5px 0 #000,
+                                                                                             0.5px 0.5px 0 #000; font-size:1.5em;">
+
+                            @Html.ActionLink("Contact", "Contact", "Home")
+                        </li>
+
+
+
+                    }
+
+
+
+
+                    </ul>
+@Html.Partial("_LoginPartial")
+</div>
+</div>
+</div>
+<div class="container body-content">
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year QuarterMaster</p>
+    </footer>
+</div>
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+@RenderSection("Scripts", false)
+</body>
+</html>

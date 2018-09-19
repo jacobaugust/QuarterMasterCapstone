@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "Event Calendar";
+}
+<head>
+    <link rel='stylesheet' type='text/css' href='~/Scripts/jquery-3.3.1.js' />
+
+</head>
+
+    <h2 style="color:cadetblue;">Watchlist News Calendar</h2>
+
+
+<br />
+<br />
+
+<div id="calender"
+     style="color:cadetblue; text-shadow:-0.5px -0.5px 0 #000,
+    0.5px -0.5px 0 #000,
+    -0.5px 0.5px 0 #000,
+     0.5px 0.5px 0 #000; ">
+
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><span id="eventTitle"></span></h4>
+            </div>
+            <div class="modal-body">
+                <p id="pDetails"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print" />
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var events = [];
+            $.ajax({
+                type: "GET",
+                url: "/Calendar/GetEvents",
+                success: function (data) {
+                    $.each(data, function (i, v) {
+                        events.push({
+                            id: v.Id,
+                            title: v.Subject,
+                            description: v.Description,
+                            start: moment(v.Start),
+                            allDay: v.IsFullDay
+
+                        });
+                    })
+
+                    GenerateCalender(events);
+                },
+                error: function (error) {
+                    alert('failed');
+                }
+            })
+
+            function GenerateCalender(events) {
+                $('#calender').fullCalendar('destroy');
+                $('#calender').fullCalendar({
+                    contentHeight: 400,
+                    defaultDate: new Date(),
+                    timeFormat: '(MMM D)',
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,basicWeek,basicDay,agenda'
+                    },
+                    eventLimit: true,
+                    eventColor: '#1a1a1a',
+                    events: events,
+                    editable: true,
+                    eventClick: function (calEvent) {
+                        window.location = '/Calendar/Details/' + calEvent.id;
+
+                    },
+                    eventMouseover: function (data, event, view) {
+
+                        tooltip = '<div class="tooltiptopicevent" style="width:auto;height:auto;background:cadetblue;position:absolute;z-index:10001;padding:10px 10px 10px 10px ; color:aliceblue; line-height: 200%;">' + 'Article Title: ' + '</br> ' + data.title + '</br> ' + 'Click for article details!';
+
+
+                        $("body").append(tooltip);
+                        $(this).mouseover(function (e) {
+                            $(this).css('z-index', 10000);
+                            $('.tooltiptopicevent').fadeIn('500');
+                            $('.tooltiptopicevent').fadeTo('10', 1.9);
+                        }).mousemove(function (e) {
+                            $('.tooltiptopicevent').css('top', e.pageY + 10);
+                            $('.tooltiptopicevent').css('left', e.pageX + 20);
+                        });
+
+
+                    },
+                    eventMouseout: function (data, event, view) {
+                        $(this).css('z-index', 8);
+
+                        $('.tooltiptopicevent').remove();
+
+                    },
+                })
+            }
+        })
+    </script>
+}

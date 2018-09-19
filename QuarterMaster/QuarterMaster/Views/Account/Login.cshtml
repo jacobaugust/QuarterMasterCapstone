@@ -1,0 +1,119 @@
+﻿@using QuarterMaster.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<header>
+    <style>
+
+
+        .btn-3:before, .btn-3:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-top: 40px solid #55643e;
+            border-bottom: 40px solid #55643e;
+        }
+
+        .btn-3:before {
+            border-right: 40px solid transparent;
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+        }
+
+        .btn-3:after {
+            border-left: 40px solid transparent;
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+        }
+
+        .btn-3:hover {
+            color: #e3e9d9;
+        }
+
+            .btn-3:hover:before {
+                -webkit-transform: translateX(-30%);
+                transform: translateX(-30%);
+            }
+
+            .btn-3:hover:after {
+                -webkit-transform: translateX(30%);
+                transform: translateX(30%);
+            }
+
+
+    </style>
+</header>
+
+<h2>@ViewBag.Title.</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Start mapping your financial journey!</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        
+                            <button class=" btn-primary" type="submit" style="border-radius:6px;">Log In</button>
+                        
+                      
+                 
+                       
+                    </div>
+                </div>
+                <p>
+                    @Html.ActionLink("Register as a new user", "Register")
+                </p>
+                @* Enable this once you have account confirmation enabled for password reset functionality
+                    <p>
+                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                    </p>*@
+            }
+        </section>
+    </div>
+    <div class="col-md-4">
+      <br />
+        <br />
+        <br />
+        <br />
+        
+            <center>
+                <img src="~/Content/OldMap.jpg" style="border-radius:6px;" />
+            </center>
+      
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

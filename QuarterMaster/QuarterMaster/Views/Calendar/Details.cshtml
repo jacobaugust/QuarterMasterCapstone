@@ -1,0 +1,41 @@
+﻿@model QuarterMaster.Models.Event
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Article Details</h2>
+
+<div class="card">
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ticker)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ticker)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            <a href="@ViewBag.URL">@Html.DisplayFor(model => model.Description)</a>
+        </dd>
+
+    </dl>
+</div>
+<p>
+
+    @Html.ActionLink("Back Stock News Calendar", "CalendarIndex")
+</p>

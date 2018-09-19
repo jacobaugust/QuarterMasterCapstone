@@ -1,0 +1,57 @@
+﻿@model IEnumerable<QuarterMaster.Models.StockBasic>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ticker)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stock_exchange)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sector)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.company_url)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ticker)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stock_exchange)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sector)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.company_url)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

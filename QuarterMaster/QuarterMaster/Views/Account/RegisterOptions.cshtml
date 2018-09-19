@@ -1,0 +1,78 @@
+﻿@model QuarterMaster.Models.RegisterViewModel
+@{
+    ViewBag.Title = "RegisterOptions";
+}
+<center><h2 class="display-4"><u>Registration Options</u></h2></center>
+<div>
+    <center>
+        <img src="~/Content/DesktopBanner.jpg" style="border-radius:6px;" />
+    </center>
+</div>
+
+<body style="font-family: Georgia; font-style: oblique;">
+
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col"><h1>Junior Account</h1></div>
+            <div class="col"><h1>Senior Account</h1></div>
+            <div class="w-100"></div>
+            <div class="col">
+                <ul class="list-group">
+                    <li class="list-group-item">Sort through over 500 stocks financial data</li>
+                    <li class="list-group-item">Add 6 Stocks to your Watchlist</li>
+                    <li class="list-group-item">Watchlist Stock News Calendar</li>
+
+                </ul>
+
+                <br />
+                <h4><u>Junior Account Yearly Cost</u></h4>
+                <button type="button" class="btn btn-primary">$50.00</button>
+            </div>
+
+
+            <div class="col">
+                <ul class="list-group">
+                    <li class="list-group-item">Sort through over 500 stocks financial data</li>
+                    <li class="list-group-item">Unlimited Watch List Adds</li>
+                    <li class="list-group-item">Watchlist Stock News Calendar</li>
+
+                </ul>
+
+                <br />
+                <h4><u>Senior Account Yearly Cost</u></h4>
+                <button type="button" class="btn btn-primary">$100.00</button>
+            </div>
+        </div>
+
+
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-12 col-md-8">
+            <form action="/Account/Charge" method="POST">
+                <article>
+                    <label style="font-size:large; color:cadetblue;">Registration Payment</label>
+                </article>
+                <script src="//checkout.stripe.com/v2/checkout.js"
+                        class="stripe-button"
+                        data-key="pk_test_aSTeSwcU6APFOaqoeT4tJJ5Q"
+                        data-locale="auto"
+                        data-description="Registration Charge"
+
+                    </script>
+            </form>
+            <br />
+            <br />
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+</body>

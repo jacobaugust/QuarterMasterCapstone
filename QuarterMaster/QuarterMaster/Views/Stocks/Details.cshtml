@@ -1,0 +1,252 @@
+﻿@model QuarterMaster.Models.Stock
+
+@{
+    ViewBag.Title = "Details";
+}
+<header>
+    <style>
+        .element {
+            width: 350px;
+            height: 100px;
+            font-size: 35px;
+            text-transform: uppercase;
+            background-color: gold;
+            background: linear-gradient(180deg, rgba(211, 211, 211, 1) 0%, rgba(192, 192, 192, 1) 41%, rgba(105, 105, 105, 1) 100%);
+            font-family: Tahoma;
+            color: dimgray;
+            text-shadow: -2px 1px 5px #000000;
+            font-weight: bolder;
+            position: relative;
+            border-radius: 12px;
+            box-shadow: 0px 0px 1px 2px #A9A9A9, 0px 0px 1px 11px #C0C0C0, 0px 0px 1px 14px #FFFFFF, 105px 0px 81px 18px rgba(249, 253, 255, 0.00), 0px 0px 0px 16px #3F3F3F, 0px 0px 1px 16px #3F3F3F;
+        }
+
+        .margin {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 1.5em;
+            font-size: 2em;
+        }
+
+        .margin-left {
+            display: block;
+            margin-left: 1em;
+            margin-top: 1.5em;
+            font-size: 2em;
+        }
+
+        .margin-right {
+            display: block;
+            margin-left: 10em;
+            margin-top: 1.5em;
+            font-size: 2em;
+        }
+    </style>
+</header>
+
+<h2>@Html.DisplayFor(model => model.StockBasic.name)</h2>
+
+@Html.ActionLink("Back to Stocks", "Index", "Stocks")
+<br />
+<div class="row">
+    <div class="col card">
+        <h4>Basics</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                Stock Ticker Symbol
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StockBasic.ticker)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StockBasic.stock_exchange)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StockBasic.stock_exchange)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StockBasic.sector)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StockBasic.sector)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockBasic.company_url)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StockBasic.company_url)
+            </dd>
+
+        </dl>
+    </div>
+    <div class="col card">
+        <h4>Income Statement</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StockIncomeStatement.netincome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StockIncomeStatement.netincome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StockIncomeStatement.totalrevenue)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StockIncomeStatement.totalrevenue)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StockIncomeStatement.totalgrossprofit)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StockIncomeStatement.totalgrossprofit)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockIncomeStatement.basiceps)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StockIncomeStatement.basiceps)
+            </dd>
+
+        </dl>
+    </div>
+    <div class="col card">
+        <h4>Balance Sheet</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StockBalanceSheet.retainedearnings)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StockBalanceSheet.retainedearnings)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StockBalanceSheet.totalassets)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StockBalanceSheet.totalassets)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StockBalanceSheet.totalliabilities)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StockBalanceSheet.totalliabilities)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockBalanceSheet.totalequity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StockBalanceSheet.totalequity)
+            </dd>
+
+        </dl>
+    </div>
+    <div class="col card ">
+        <h4>Metrics</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StockMetrics.profitmargin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StockMetrics.profitmargin)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StockMetrics.grossmargin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StockMetrics.grossmargin)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StockMetrics.dividendyield)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StockMetrics.dividendyield)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.StockMetrics.currentratio)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StockMetrics.currentratio)
+            </dd>
+
+        </dl>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div id="chartContainer"></div>
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <center>
+            <button type="button" class="element margin">
+                &#x272F
+                @Html.ActionLink("Watchlist", "StockToWatchlist", new { id = Model.Id })
+                &#x272F
+            </button>
+        </center>
+    </div>
+    <div class="col-sm-4">
+        <button type="button" class="element margin">
+            &#8492
+            @Html.ActionLink("Bar Chart", "StockBarChart", new { id = Model.Id })
+            &#8492
+        </button>
+    </div>
+    <div class="col-sm-4">
+        <button type="button" class="element margin">
+            &#119979
+            @Html.ActionLink("Pie Chart", "StockPieChart", new { id = Model.Id })
+            &#119979
+        </button>
+    </div>
+
+</div>
+
+<br />
+<br />
+
+
+
+
+
+
+

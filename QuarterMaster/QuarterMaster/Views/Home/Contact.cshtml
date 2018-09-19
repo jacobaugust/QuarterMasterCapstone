@@ -1,0 +1,46 @@
+﻿@model QuarterMaster.Models.Email
+
+
+@{
+    ViewBag.Title = "Contact";
+}
+<br />
+<br />
+
+
+<h4>Email QuarterMaster with any comments or questions below</h4>
+
+    @using (Html.BeginForm())
+    {
+@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+   
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10" style="width:100%">
+            @Html.TextBoxFor(model => model.Subject, new { htmlAttributes = new { style = "width:100%; max-width: 100%;" } })
+            @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10" style="width:100%">
+            @Html.TextAreaFor(model => model.Message, 8, 100, new { @class = "form-control", style = "width: 67%; max-width: 100%;" })
+            @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Submit" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+        
+    }

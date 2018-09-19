@@ -1,0 +1,58 @@
+﻿@model QuarterMaster.Models.StockBasic
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>StockBasic</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ticker)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ticker)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stock_exchange)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stock_exchange)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sector)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sector)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.company_url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.company_url)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
